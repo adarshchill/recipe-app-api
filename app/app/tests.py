@@ -21,3 +21,8 @@ class CalcTests(SimpleTestCase):
         res = calc.subtract(10, 15)
 
         self.assertEqual(res, 5)
+
+    def test_hi_interviewer(self):
+        """Just a HI to interviewer"""
+        res = calc.give_me_hi()
+        self.assertEqual(res, "Hi Mr/Ms InterViewer")

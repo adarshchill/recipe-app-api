@@ -2,8 +2,9 @@
 Sample tests
 """
 
+from http import client  # noqa
 from django.test import SimpleTestCase
-
+from rest_framework.test import APIClient   # noqa
 from app import calc
 
 
@@ -26,3 +27,9 @@ class CalcTests(SimpleTestCase):
         """Just a HI to interviewer"""
         res = calc.give_me_hi()
         self.assertEqual(res, "Hi Mr/Ms InterViewer")
+
+    def test_ping_google(self):
+        """pinging ggogle.com"""
+        client = APIClient()  # noqa
+        res = client.get("https://www.cricbuzz.com/")
+        print(res)

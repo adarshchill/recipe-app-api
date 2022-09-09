@@ -1,8 +1,8 @@
 """Data Base models"""
 
-import email
-from operator import mod
-from unicodedata import name
+import email   # noqa
+from operator import mod   # noqa
+from unicodedata import name   # noqa
 from django.db import models
 from django.contrib.auth.models import (
     AbstractBaseUser,
@@ -14,7 +14,7 @@ from django.contrib.auth.models import (
 class UserManager(BaseUserManager):
     """Manager for users."""
 
-    def create_user(self, email, password=None, **extra_fields):
+    def create_user(self, email, password=None, **extra_fields):   # noqa
         """Create, save and return a new user."""
         if not email:
             raise ValueError('User must have an email address.')
@@ -24,7 +24,7 @@ class UserManager(BaseUserManager):
 
         return user
 
-    def create_superuser(self, email, password):
+    def create_superuser(self, email, password):   # noqa
         """Create and return a new superuser."""
         user = self.create_user(email, password)
         user.is_staff = True
@@ -33,10 +33,11 @@ class UserManager(BaseUserManager):
 
         return user
 
-class User(AbstractBaseUser,PermissionsMixin):
+
+class User(AbstractBaseUser, PermissionsMixin):
     """User in the system"""
-    email = models.EmailField(max_length=255, unique=True)
-    name = models.CharField(max_length=255)
+    email = models.EmailField(max_length=255, unique=True)   # noqa
+    name = models.CharField(max_length=255)   # noqa
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     objects = UserManager()
